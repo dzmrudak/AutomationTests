@@ -38,16 +38,50 @@ public class UnitTests {
     }
 
     //Extracting of a square root Test
+    // a > 0, check squareRoot(a)
     @Test
-    public void squareRootTest() {
+    public void squareRootTest1() {
         Calculator calc = new Calculator();
         Assert.assertEquals(calc.squareRoot(16), 4);
     }
 
-    // Fraction numbers division Test
+    //Extracting of a square root Test
+    // a < 0, check squareRoot(a)
     @Test
-    public void fractDivTest() {
+    public void squareRootTest2() {
+        Calculator calc = new Calculator();
+        Assert.assertEquals(calc.squareRoot(-16), 4);
+    }
+
+    //Extracting of a square root Test
+    // a is float, check squareRoot(a)
+    @Test
+    public void squareRootTest3() {
+        Calculator calc = new Calculator();
+        Assert.assertEquals(calc.squareRoot(16.16), 4.019950248448356);
+    }
+
+    // Fraction numbers division Test
+    // b != 0, c != 0, d != 0
+    @Test
+    public void fractDivTest1() {
+        Calculator calc = new Calculator();
+        Assert.assertEquals(calc.fractDiv(3, 5, 3, 4), 0.8);
+    }
+
+    // Fraction numbers division Test
+    // b == 0 || c == 0 || d != 0
+    @Test
+    public void fractDivTest2() {
         Calculator calc = new Calculator();
         Assert.assertEquals(calc.fractDiv(3, 0, 3, 4), 0.8);
+    }
+
+    // Fraction numbers division Test
+    // a < 0 || c < 0
+    @Test
+    public void fractDivTest3() {
+        Calculator calc = new Calculator();
+        Assert.assertEquals(calc.fractDiv(-3, 5, 3, 4), -0.8);
     }
 }
