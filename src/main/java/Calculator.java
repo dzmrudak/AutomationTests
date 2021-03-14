@@ -9,17 +9,14 @@ public class Calculator {
     }
 
     public double squareRoot(double a) {
-        if (a < 0) {
-            System.out.println("You can not extract the root from a negative number!");
-        }
         return Math.sqrt(a);
     }
 
     public double fractDiv(double a, double b, double c, double d) {
-
-        if(b <= 0 || d <= 0 || c <= 0) {
-            System.out.println("Error: division by zero");
+        double fractDiv = (a * d) / (b * c);
+        if (b == 0 || c == 0 || d == 0) {
+            fractDiv = a / 0;
         }
-        return (a * d) / (b * c);
+        return fractDiv;
     }
 }

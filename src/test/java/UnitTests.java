@@ -50,7 +50,7 @@ public class UnitTests {
     @Test
     public void squareRootTest2() {
         Calculator calc = new Calculator();
-        Assert.assertEquals(calc.squareRoot(-16), 4);
+        Assert.assertEquals(Double.NaN, calc.squareRoot(-16));
     }
 
     //Extracting of a square root Test
@@ -70,11 +70,11 @@ public class UnitTests {
     }
 
     // Fraction numbers division Test
-    // b == 0 || c == 0 || d != 0
+    // a != 0 && b ==0 || c == 0 || d == 0
     @Test
     public void fractDivTest2() {
         Calculator calc = new Calculator();
-        Assert.assertEquals(calc.fractDiv(3, 0, 3, 4), 0.8);
+        Assert.assertEquals(Double.POSITIVE_INFINITY, calc.fractDiv(3, 0, 3, 4));
     }
 
     // Fraction numbers division Test
