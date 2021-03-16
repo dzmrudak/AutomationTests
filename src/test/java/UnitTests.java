@@ -61,27 +61,51 @@ public class UnitTests {
         Assert.assertEquals(calc.squareRoot(16.16), 4.019950248448356);
     }
 
-    // Fraction numbers division Test
-    // b != 0, c != 0, d != 0
+    // Double numbers division Test
+    // a > 0, b > 0
     @Test
-    public void fractDivTest1() {
+    public void doubleDivTest1() {
         Calculator calc = new Calculator();
-        Assert.assertEquals(calc.fractDiv(3, 5, 3, 4), 0.8);
+        Assert.assertEquals(String.format("%.2f", calc.doubleDiv(0.6, 0.8)), "0,75");
     }
 
-    // Fraction numbers division Test
-    // a != 0 && b ==0 || c == 0 || d == 0
+    // Double numbers division Test
+    // div by zero
     @Test
-    public void fractDivTest2() {
+    public void doubleDivTest2() {
         Calculator calc = new Calculator();
-        Assert.assertEquals(Double.POSITIVE_INFINITY, calc.fractDiv(3, 0, 3, 4));
+        Assert.assertThrows(java.lang.ArithmeticException.class, () -> calc.doubleDiv(5.5, 0));
     }
 
-    // Fraction numbers division Test
-    // a < 0 || c < 0
+    // Double numbers division Test
+    // a < 0, b > 0
     @Test
-    public void fractDivTest3() {
+    public void doubleDivTest3() {
         Calculator calc = new Calculator();
-        Assert.assertEquals(calc.fractDiv(-3, 5, 3, 4), -0.8);
+        Assert.assertEquals(String.format("%.2f", calc.doubleDiv(-0.6, 0.8)), "-0,75");
+    }
+
+    // Double numbers division Test
+    // a > 0, b < 0
+    @Test
+    public void doubleDivTest4() {
+        Calculator calc = new Calculator();
+        Assert.assertEquals(String.format("%.2f", calc.doubleDiv(0.6, -0.8)), "-0,75");
+    }
+
+    // Double numbers division Test
+    // a < 0, b < 0
+    @Test
+    public void doubleDivTest5() {
+        Calculator calc = new Calculator();
+        Assert.assertEquals(String.format("%.2f", calc.doubleDiv(-0.6, -0.8)), "0,75");
+    }
+
+    // Double numbers division Test
+    // a > 0, b > 0: with a period
+    @Test
+    public void doubleDivTest6() {
+        Calculator calc = new Calculator();
+        Assert.assertEquals(calc.doubleDiv(10, 3), 3.3333333333333335);
     }
 }
