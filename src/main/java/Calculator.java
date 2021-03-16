@@ -12,11 +12,7 @@ public class Calculator {
         return Math.sqrt(a);
     }
 
-    public double fractDiv(double a, double b, double c, double d) {
-        double fractDiv = (a * d) / (b * c);
-        if (b == 0 || c == 0 || d == 0) {
-            fractDiv = a / 0;
-        }
-        return fractDiv;
+    public double doubleDiv(double a, double b) {
+        return a / b;
     }
 }
