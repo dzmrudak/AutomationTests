@@ -12,6 +12,7 @@ public class ProjectPage extends BasePage {
     protected static final By editProjectButtonBy = By.className("button-edit");
     protected static final By projectIdBy = By.className("content-header-id");
     protected static final By successMessageBy = By.className("message-success");
+    protected static final By testsSuitesNCasesMenuItemBy = By.id("navigation-suites");
 
     public ProjectPage(BrowserService browserService, boolean openPageByUrl) {
         super(browserService, openPageByUrl);
@@ -41,6 +42,10 @@ public class ProjectPage extends BasePage {
 
     public WebElement getSuccessMessage() {
         return driver.findElement(successMessageBy);
+    }
+
+    public WebElement getTestsSuitesNCasesMenuItem() {
+        return driver.findElement(testsSuitesNCasesMenuItemBy);
     }
 
 }

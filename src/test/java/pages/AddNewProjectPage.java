@@ -18,7 +18,7 @@ public class AddNewProjectPage extends BasePage {
     protected static final By projectType2RadioButtonBy = By.id("suite_mode_single_baseline");
     protected static final By projectType3RadioButtonBy = By.id("suite_mode_multi");
     protected static final By addProjectButtonBy = By.id("accept");
-    protected static final By cancelButtonBy = By.className("button button-left button-negative button-cancel");
+    protected static final By cancelButtonBy = By.className("button-cancel");
 
     // Class initialization
     public AddNewProjectPage(BrowserService browserService, boolean openPageByUrl) {

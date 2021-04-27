@@ -2,15 +2,15 @@ package tests;
 
 import baseEntities.BaseTest;
 import models.Project;
+import models.TestCase;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pages.AllProjectsPage;
-import pages.DashboardPage;
-import pages.ProjectPage;
+import pages.*;
 import steps.LoginSteps;
 import steps.ProjectServiceSteps;
+import steps.TestCaseServiceSteps;
 import testData.StaticProvider;
 
 public class ParamTest extends BaseTest {
@@ -72,6 +72,36 @@ public class ParamTest extends BaseTest {
         System.out.println("Project type: " + project);
 
     }
+
+
+    @Test(dataProvider = "Create Test Case", dataProviderClass = StaticProvider.class/*, dependsOnMethods = "createProjectTest"*/)
+    public void createTestCase(String testCaseTitle, TestCase testCase){
+        LoginSteps loginSteps = new LoginSteps(browserService);
+        DashboardPage dashboardPage = loginSteps.loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
+
+        dashboardPage.getProjectNameTitle("DR project 1").click();
+
+        ProjectPage projectPage = new ProjectPage(browserService, false);
+        projectPage.getTestsSuitesNCasesMenuItem().click();
+
+        SuitesPage suitesPage = new SuitesPage(browserService, false);
+        //Тут пока захардкодим имя набора тестов
+        suitesPage.getSuiteName("Master").click();
+
+        SuiteDetailedPage suitePage = new SuiteDetailedPage(browserService, false);
+        suitePage.getAddTestCaseButton().click();
+
+        TestCaseServiceSteps addNewTestCase = new TestCaseServiceSteps(browserService);
+        TestCaseDetailedPage newTestCase = addNewTestCase.addTestCase(testCase);
+
+        Assert.assertEquals(newTestCase.getSuccessMessage().getText(), "Successfully added the new test case. Add another");
+
+        System.out.println("Project name: " + testCaseTitle);
+        System.out.println("Project type: " + testCase);
+    }
+
+
+
 
     @Parameters({"first-name", "last-name"})
     @Test

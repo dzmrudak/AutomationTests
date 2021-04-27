@@ -1,7 +1,12 @@
 package testData;
 
 import enums.ProjectType;
+import enums.testCaseAttributes.Priority;
+import enums.testCaseAttributes.Section;
+import enums.testCaseAttributes.Template;
+import enums.testCaseAttributes.Type;
 import models.Project;
+import models.TestCase;
 import org.testng.annotations.DataProvider;
 
 public class StaticProvider {
@@ -10,26 +15,15 @@ public class StaticProvider {
     public static Object[][] createData(){
         return new Object[][] {
                 {"Project 1", new Project("DR project 1", "announcement1", true, ProjectType.SINGLE_FOR_ALL_CASES)},
-                {"Project 2", new Project("DR project 2", "announcement2", false, ProjectType.SINGLE_WITH_BASELINE)},
-                {"Project 3", new Project("DR project 3", "announcement3", true, ProjectType.MULTIPLE)}
+                //{"Project 2", new Project("DR project 2", "announcement2", false, ProjectType.SINGLE_WITH_BASELINE)},
+                //{"Project 3", new Project("DR project 3", "announcement3", true, ProjectType.MULTIPLE)}
         };
     }
 
-    @DataProvider(name = "Update Project")
-    public static Object[][] updateData(){
+    @DataProvider(name = "Create Test Case")
+    public static Object[][] createTestCase() {
         return new Object[][] {
-                {"Project 1", new Project("DR project 1", "announcement1 UPDATED", false, ProjectType.MULTIPLE)},
-                {"Project 2", new Project("DR project 2", "announcement2 UPDATED", true, ProjectType.SINGLE_FOR_ALL_CASES)},
-                {"Project 3", new Project("DR project 3", "announcement3 UPDATED", false, ProjectType.SINGLE_WITH_BASELINE)}
-        };
-    }
-
-    @DataProvider(name = "Delete Project")
-    public static Object[][] deleteData(){
-        return new Object[][] {
-                {"Project 1", new Project("DR project 1", "announcement1", true, ProjectType.SINGLE_FOR_ALL_CASES)},
-                {"Project 2", new Project("DR project 2", "announcement2", false, ProjectType.SINGLE_WITH_BASELINE)},
-                {"Project 3", new Project("DR project 3", "announcement3", true, ProjectType.MULTIPLE)}
+                {"Test Case 1", new TestCase("TestCase1", Section.TEST_CASES, Template.TEST_CASE_TEXT, Type.REGRESSION, Priority.MEDIUM)}
         };
     }
 }
