@@ -4,13 +4,13 @@ import core.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class SuiteDetailedPage extends SuitesPage{
+import java.util.List;
+
+public class SuiteDetailedPage extends TestCasesPage {
 
     private static final String END_POINT = "index.php?/suites/view/";
 
-    protected static final By addTestCaseButtonBy = By.id("sidebar-cases-add");
     protected static final By testSuiteIdBy = By.className("content-header-id");
-
 
     public SuiteDetailedPage(BrowserService browserService, boolean openPageByUrl) {
         super(browserService, openPageByUrl);
@@ -30,9 +30,6 @@ public class SuiteDetailedPage extends SuitesPage{
         }
     }
 
-    public WebElement getAddTestCaseButton() {
-        return driver.findElement(addTestCaseButtonBy);
-    }
     public WebElement getTestSuiteId() {
         return driver.findElement(testSuiteIdBy);
     }

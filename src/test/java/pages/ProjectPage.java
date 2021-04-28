@@ -12,7 +12,7 @@ public class ProjectPage extends BasePage {
     protected static final By editProjectButtonBy = By.className("button-edit");
     protected static final By projectIdBy = By.className("content-header-id");
     protected static final By successMessageBy = By.className("message-success");
-    protected static final By testsSuitesNCasesMenuItemBy = By.id("navigation-suites");
+    protected static final By testCasesMenuItemBy = By.id("navigation-suites");
 
     public ProjectPage(BrowserService browserService, boolean openPageByUrl) {
         super(browserService, openPageByUrl);
@@ -44,8 +44,8 @@ public class ProjectPage extends BasePage {
         return driver.findElement(successMessageBy);
     }
 
-    public WebElement getTestsSuitesNCasesMenuItem() {
-        return driver.findElement(testsSuitesNCasesMenuItemBy);
+    public WebElement getTestsCasesMenuItem() {
+        return driver.findElement(testCasesMenuItemBy);
     }
 
 }

@@ -3,6 +3,8 @@ package steps;
 import baseEntities.BaseStep;
 import core.BrowserService;
 import models.TestCase;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import pages.AddNewTestCase;
 import pages.TestCaseDetailedPage;
 import org.openqa.selenium.JavascriptExecutor;
@@ -23,7 +25,13 @@ public class TestCaseServiceSteps extends BaseStep {
 
         AddNewTestCase addNewTestCase = new AddNewTestCase(browserService, false);
         JavascriptExecutor js = (JavascriptExecutor) browserService.getDriver();
+        Actions actions = new Actions(browserService.getDriver());
 
+        addNewTestCase.getTitleNameInput().click();
+        actions.keyDown(Keys.CONTROL);
+        actions.sendKeys("a");
+        actions.keyUp(Keys.CONTROL);
+        actions.build().perform();
         addNewTestCase.getTitleNameInput().sendKeys(testCase.getTitle());
 
         Select sectionDropDown = new Select(addNewTestCase.getSelectSection());
@@ -119,4 +127,6 @@ public class TestCaseServiceSteps extends BaseStep {
 
         return new TestCaseDetailedPage(browserService, false);
     }
+
+
 }

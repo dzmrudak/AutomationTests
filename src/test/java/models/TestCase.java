@@ -15,10 +15,10 @@ public class TestCase {
 
     public TestCase(String title, Section section, Template template, Type type, Priority priority) {
         this.title = title;
-        this.priority = priority;
         this.section = section;
         this.template = template;
         this.type = type;
+        this.priority = priority;
     }
 
     public String getTitle() {
@@ -65,10 +65,10 @@ public class TestCase {
     public String toString() {
         return "TestCase{" +
                 "title='" + title + '\'' +
-                ", priority=" + priority +
                 ", section=" + section +
                 ", template=" + template +
                 ", type=" + type +
+                ", priority=" + priority +
                 '}';
     }
 }

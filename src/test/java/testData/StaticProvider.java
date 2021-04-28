@@ -26,4 +26,18 @@ public class StaticProvider {
                 {"Test Case 1", new TestCase("TestCase1", Section.TEST_CASES, Template.TEST_CASE_TEXT, Type.REGRESSION, Priority.MEDIUM)}
         };
     }
+
+    @DataProvider(name = "Update Test Case")
+    public static Object[][] updateTestCase() {
+        return new Object[][] {
+                {"Test Case 1", new TestCase("TestCase1", Section.TEST_CASES, Template.TEST_CASE_TEXT, Type.ACCEPTANCE, Priority.LOW)}
+        };
+    }
+
+    @DataProvider(name = "Delete Test Case")
+    public static Object[][] deleteTestCase() {
+        return new Object[][] {
+                {"Test Case 1", new TestCase("TestCase1", Section.TEST_CASES, Template.TEST_CASE_TEXT, Type.ACCEPTANCE, Priority.LOW)}
+        };
+    }
 }
