@@ -3,6 +3,7 @@ package baseEntities;
 import core.BrowserService;
 import core.ReadProperties;
 import org.testng.annotations.*;
+import utils.Waits;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +11,7 @@ public abstract class BaseTest {
 
     protected BrowserService browserService;
     protected ReadProperties readProperties;
+    protected Waits waits;
 
     @BeforeSuite
     public void setupSuite(){
@@ -37,8 +39,9 @@ public abstract class BaseTest {
     public void setupMethod(){
         System.out.println("BeforeMethod: ");
         browserService = new BrowserService();
-        browserService.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
+        browserService.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         browserService.getDriver().get(readProperties.getURL());
+        waits = browserService.getWaits();
     }
 
 

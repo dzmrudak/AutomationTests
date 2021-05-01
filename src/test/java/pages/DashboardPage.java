@@ -26,6 +26,7 @@ public class DashboardPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
+
         try {
             return getSidebarProjectsAddButton().isDisplayed();
         } catch (Exception ex)
