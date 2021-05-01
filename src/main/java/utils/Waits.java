@@ -35,4 +35,8 @@ public class Waits {
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
     }
 
+    public WebDriver waitForVisibilityOfFrame(By by) {
+        return wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(by));
+    }
+
 }

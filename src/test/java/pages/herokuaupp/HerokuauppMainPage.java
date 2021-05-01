@@ -11,6 +11,7 @@ public class HerokuauppMainPage extends BasePage {
     protected static final By contextMenuButtonBy = By.xpath("//li[contains(concat(' ', a, ' '), ' Context Menu ')]/a");
     protected static final By dynamicControlsButtonBy = By.xpath("//li[contains(concat(' ', a, ' '), ' Dynamic Controls ')]/a");
     protected static final By fileUploadButtonBy = By.xpath("//li[contains(concat(' ', a, ' '), ' File Upload ')]/a");
+    protected static final By jsAlertsButtonBy = By.xpath("//li[contains(concat(' ', a, ' '), ' JavaScript Alerts ')]/a");
 
     public HerokuauppMainPage(BrowserService browserService, boolean openPageByUrl) {
         super(browserService, openPageByUrl);
@@ -44,5 +45,9 @@ public class HerokuauppMainPage extends BasePage {
 
     public WebElement getFileUploadButton() {
         return driver.findElement(fileUploadButtonBy);
+    }
+
+    public WebElement getJsAlertsButton() {
+        return driver.findElement(jsAlertsButtonBy);
     }
 }
