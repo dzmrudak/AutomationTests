@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="general">
+    
+    <parameter name="first-name" value="Alex"></parameter>
+    <parameter name="last-name" value="Trostyanko"></parameter>
+    <test name="GUI tests">
+        
+        <classes> 
+        
+            <class name="tests.ParamTest"></class>
+            
+        </classes>
+        
+    </test>
+    
+</suite>

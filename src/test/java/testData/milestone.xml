@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<milestones>
+    <name>string</name>
+    <description>string</description>
+    <due_on>timestamp</due_on>
+    <parent_id>int</parent_id>
+    <refs>string</refs>
+    <start_on>timestamp</start_on>
+</milestones>
