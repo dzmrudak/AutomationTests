@@ -6,6 +6,7 @@ import core.ReadProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import wrappers.Button;
 
 public class LoginPage extends BasePage {
 
@@ -43,8 +44,8 @@ public class LoginPage extends BasePage {
     public WebElement getPasswordInput() {
         return driver.findElement(passwordInputBy);
     }
-    public WebElement getLoginButton() {
-        return driver.findElement(loginButtonBy);
+    public Button getLoginButton() {
+        return new Button(driver, loginButtonBy);
     }
     public String getErrorText() {
         return driver.findElement(errorLabelBy).getText();

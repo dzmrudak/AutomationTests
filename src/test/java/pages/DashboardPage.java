@@ -5,6 +5,7 @@ import core.BrowserService;
 import models.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import wrappers.DropDownMenu;
 
 public class DashboardPage extends BasePage {
 
@@ -13,6 +14,9 @@ public class DashboardPage extends BasePage {
     protected static final By sidebarProjectsAddButtonBy = By.id("sidebar-projects-add");
     protected String projectNameTitleBy = "remove";
     protected static final By administrationButtonBy = By.id("navigation-admin");
+    protected static final By navigationUserDropDownBy = By.id("navigation-user");
+    protected static final By navigationUserDropDownMenuBy = By.xpath("//*[@class= 'top-menu-item']/following :: " +
+            "div[@id= 'userDropdown']//*[@class = 'dropdown-menu-link']");
 
     // Class initialization
     public DashboardPage(BrowserService browserService, boolean openPageByUrl) {
@@ -46,6 +50,14 @@ public class DashboardPage extends BasePage {
 
     public WebElement getAdministrationButton(){
         return driver.findElement(administrationButtonBy);
+    }
+
+    public WebElement getNavigationUserDropDown(){
+        return driver.findElement(navigationUserDropDownBy);
+    }
+
+    public DropDownMenu getNavigationUserDropDownMenu() {
+        return new DropDownMenu(driver, navigationUserDropDownMenuBy);
     }
 
 }

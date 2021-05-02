@@ -38,7 +38,7 @@ public class ProjectServiceSteps extends BaseStep {
             default:
                 break;
         }
-        addProjectsPage.getAddProjectButton().click();
+        addProjectsPage.getAcceptProjectButton().click();
         return new AllProjectsPage(browserService, false);
     }
 

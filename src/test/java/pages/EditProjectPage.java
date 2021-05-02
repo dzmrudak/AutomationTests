@@ -32,7 +32,7 @@ public class EditProjectPage extends AddNewProjectPage {
     }
 
     public WebElement getSaveProjectButton() {
-        return driver.findElement(addProjectButtonBy);
+        return driver.findElement(acceptProjectButtonBy);
     }
 
 

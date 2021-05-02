@@ -4,6 +4,7 @@ import baseEntities.BasePage;
 import core.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import wrappers.Table;
 
 public class AllProjectsPage extends BasePage {
 
@@ -14,7 +15,7 @@ public class AllProjectsPage extends BasePage {
     protected static final String deleteProjectButtonBy = "//td[contains(concat(' ', a, ' '), 'remove')]/a/../following-sibling :: *//div[@class = 'icon-small-delete']";
     protected static final By confirmDeletingBoxBy = By.xpath("//div[@id='deleteDialog']//input[@name='deleteCheckbox']");
     protected static final By confirmDeletingButtonBy = By.xpath("//div[@id='deleteDialog']//a[contains(@class, 'button-ok')]");
-
+    protected static final By tableBy = By.className("grid");
 
     // Class initialization
     public AllProjectsPage(BrowserService browserService, boolean openPageByUrl) {
@@ -60,4 +61,6 @@ public class AllProjectsPage extends BasePage {
     public WebElement getConfirmDeletingProjectButton(){
         return driver.findElement(confirmDeletingButtonBy);
     }
+
+    public Table projectTable = new Table(driver, tableBy);
 }
