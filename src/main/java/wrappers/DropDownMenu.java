@@ -33,4 +33,13 @@ public class DropDownMenu {
         int index = optionsTextList.indexOf(optionName);
         optionsList.get(index).click();
     }
+
+    public void selectByIndex(int index) {
+        optionsList.get(index).click();
+    }
+
+    public boolean isOptionDisplayed(String optionName) {
+        int index = optionsTextList.indexOf(optionName);
+        return optionsList.get(index).isDisplayed();
+    }
 }
