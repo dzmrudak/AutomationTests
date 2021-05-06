@@ -2,6 +2,7 @@ package steps;
 
 import baseEntities.BaseStep;
 import core.BrowserService;
+import io.qameta.allure.Step;
 import models.Project;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -13,6 +14,7 @@ public class ProjectServiceSteps extends BaseStep {
         super(browserService);
     }
 
+    @Step("New Project details: 'project'")
     public AllProjectsPage addProject(Project project) {
         System.out.println(project.getName());
         System.out.println(project.getAnnouncement());

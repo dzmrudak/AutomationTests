@@ -5,6 +5,7 @@ import enums.testCaseAttributes.Priority;
 import enums.testCaseAttributes.Section;
 import enums.testCaseAttributes.Template;
 import enums.testCaseAttributes.Type;
+import io.qameta.allure.Step;
 import models.Project;
 import models.TestCase;
 import org.testng.annotations.DataProvider;
@@ -15,6 +16,24 @@ public class StaticProvider {
     public static Object[][] createData(){
         return new Object[][] {
                 {"Project 1", new Project("DR project 1", "announcement1", true, ProjectType.SINGLE_FOR_ALL_CASES)},
+                //{"Project 2", new Project("DR project 2", "announcement2", false, ProjectType.SINGLE_WITH_BASELINE)},
+                //{"Project 3", new Project("DR project 3", "announcement3", true, ProjectType.MULTIPLE)}
+        };
+    }
+
+    @DataProvider(name = "Update Project")
+    public static Object[][] updateData(){
+        return new Object[][] {
+                {"Project 1", new Project("DR project 1", "announcement1 and announcement2", true, ProjectType.SINGLE_FOR_ALL_CASES)},
+                //{"Project 2", new Project("DR project 2", "announcement2", false, ProjectType.SINGLE_WITH_BASELINE)},
+                //{"Project 3", new Project("DR project 3", "announcement3", true, ProjectType.MULTIPLE)}
+        };
+    }
+
+    @DataProvider(name = "Delete Project")
+    public static Object[][] deleteData(){
+        return new Object[][] {
+                {"Project 1", new Project("DR project 1", "announcement1 and announcement2", true, ProjectType.SINGLE_FOR_ALL_CASES)},
                 //{"Project 2", new Project("DR project 2", "announcement2", false, ProjectType.SINGLE_WITH_BASELINE)},
                 //{"Project 3", new Project("DR project 3", "announcement3", true, ProjectType.MULTIPLE)}
         };

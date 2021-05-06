@@ -15,8 +15,12 @@ public class DashboardPage extends BasePage {
     protected String projectNameTitleBy = "remove";
     protected static final By administrationButtonBy = By.id("navigation-admin");
     protected static final By navigationUserDropDownBy = By.id("navigation-user");
+    protected static final By navigationMenuDropDownBy = By.id("navigation-menu");
     protected static final By navigationUserDropDownMenuBy = By.xpath("//*[@class= 'top-menu-item']/following :: " +
             "div[@id= 'userDropdown']//*[@class = 'dropdown-menu-link']");
+
+    protected static final By navigationMenuDropDownMenuBy = By.xpath("//*[@class= 'top-menu-item']/following :: " +
+            "div[@id= 'helpDropdown']//*[@class = 'dropdown-menu-link']");
 
     // Class initialization
     public DashboardPage(BrowserService browserService, boolean openPageByUrl) {
@@ -56,8 +60,16 @@ public class DashboardPage extends BasePage {
         return driver.findElement(navigationUserDropDownBy);
     }
 
+    public WebElement getNavigationMenuDropDown(){
+        return driver.findElement(navigationMenuDropDownBy);
+    }
+
     public DropDownMenu getNavigationUserDropDownMenu() {
         return new DropDownMenu(driver, navigationUserDropDownMenuBy);
+    }
+
+    public DropDownMenu getNavigationMenuDropDownMenu() {
+        return new DropDownMenu(driver, navigationMenuDropDownMenuBy);
     }
 
 }

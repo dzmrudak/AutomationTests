@@ -108,7 +108,8 @@ public class SmokeTest2 extends BaseTest {
 //        Проверить, что имя файла на странице совпадает с именем загруженного файла
 
         Actions actions = new Actions(browserService.getDriver());
-        HerokuauppMainPage fileUploadPage = new HerokuauppMainPage(browserService, true);
+
+        HerokuauppMainPage fileUploadPage = new HerokuauppMainPage(browserService, false);
         fileUploadPage.getFileUploadButton().click();
 
         FileUploadPage fileUpload = new FileUploadPage(browserService, false);
