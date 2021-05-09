@@ -2,6 +2,7 @@ package steps;
 
 import baseEntities.BaseStep;
 import core.BrowserService;
+import io.qameta.allure.Step;
 import models.TestCase;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -17,11 +18,8 @@ public class TestCaseServiceSteps extends BaseStep {
         super(browserService);
     }
 
+    @Step("New Test Case: 'testCase'")
     public TestCaseDetailedPage addTestCase(TestCase testCase) {
-        System.out.println(testCase.getTitle());
-        System.out.println(testCase.getSection());
-        System.out.println(testCase.getTemplate());
-        System.out.println(testCase.getType());
 
         AddNewTestCase addNewTestCase = new AddNewTestCase(browserService, false);
         JavascriptExecutor js = (JavascriptExecutor) browserService.getDriver();
@@ -127,6 +125,4 @@ public class TestCaseServiceSteps extends BaseStep {
 
         return new TestCaseDetailedPage(browserService, false);
     }
-
-
 }

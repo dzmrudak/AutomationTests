@@ -2,12 +2,16 @@ package pages;
 
 import baseEntities.BasePage;
 import core.BrowserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class ProjectPage extends BasePage {
 
     private static final String END_POINT = "index.php?/projects/overview/";
+
+    public static Logger logger = LogManager.getLogger(ProjectPage.class);
 
     protected static final By editProjectButtonBy = By.className("button-edit");
     protected static final By projectIdBy = By.className("content-header-id");
@@ -26,8 +30,12 @@ public class ProjectPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         try {
-            return getEditButton().isDisplayed();
+            if(getEditButton().isDisplayed()) {
+                logger.info("Project Page opened successfully");
+                return true;
+            } else return false;
         } catch (Exception ex) {
+            logger.error("Project Page has not been opened.");
             return false;
         }
     }

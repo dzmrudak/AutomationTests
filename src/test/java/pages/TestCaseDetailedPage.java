@@ -2,12 +2,16 @@ package pages;
 
 import baseEntities.BasePage;
 import core.BrowserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class TestCaseDetailedPage extends BasePage {
 
     private static final String END_POINT = "index.php?/cases/view/";
+
+    public Logger logger = LogManager.getLogger(TestCaseDetailedPage.class);
 
     protected static final By testCaseIdBy = By.className("content-header-id");
     protected static final By successMessageBy = By.className("message-success");
@@ -25,8 +29,12 @@ public class TestCaseDetailedPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         try {
-            return getEditTestCaseButton().isDisplayed();
+            if(getEditTestCaseButton().isDisplayed()) {
+                logger.info("Test Case detailed page opened successfully");
+                return true;
+            } else return false;
         } catch (Exception ex) {
+            logger.error("Test Case detailed page has not been opened");
             return false;
         }
     }

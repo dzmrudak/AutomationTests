@@ -121,7 +121,7 @@ public class ParamTest extends BaseTest {
         System.out.println("Test Case Details: " + testCase);
     }
 
-    @Test(dataProvider = "Delete Test Case", dataProviderClass = StaticProvider.class, dependsOnMethods = "createTestCase", priority = 3)
+    @Test(dataProvider = "Delete Test Case", dataProviderClass = StaticProvider.class/*, dependsOnMethods = "createTestCase", priority = 3*/)
     public void deleteTestCase(String testCaseTitle, TestCase testCase) {
         LoginSteps loginSteps = new LoginSteps(browserService);
         DashboardPage dashboardPage = loginSteps.loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");

@@ -3,6 +3,8 @@ package pages;
 import baseEntities.BasePage;
 import core.BrowserService;
 import models.Project;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import wrappers.DropDownMenu;
@@ -10,6 +12,8 @@ import wrappers.DropDownMenu;
 public class DashboardPage extends BasePage {
 
     private static String END_POINT = "index.php?/dashboard";
+
+    public Logger logger = LogManager.getLogger(DashboardPage.class);
 
     protected static final By sidebarProjectsAddButtonBy = By.id("sidebar-projects-add");
     protected String projectNameTitleBy = "remove";
@@ -36,9 +40,13 @@ public class DashboardPage extends BasePage {
     public boolean isPageOpened() {
 
         try {
-            return getSidebarProjectsAddButton().isDisplayed();
+            if(getSidebarProjectsAddButton().isDisplayed()) {
+                logger.info("Dashboard page opened successfully");
+                return true;
+            } else return false;
         } catch (Exception ex)
         {
+            logger.error("Dashboard page has not been opened");
             return false;
         }
     }

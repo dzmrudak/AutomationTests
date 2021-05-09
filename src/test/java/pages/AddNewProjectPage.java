@@ -2,6 +2,8 @@ package pages;
 
 import baseEntities.BasePage;
 import core.BrowserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import wrappers.Button;
@@ -11,6 +13,8 @@ import wrappers.RadioButton;
 public class AddNewProjectPage extends BasePage {
 
     private static final String END_POINT = "index.php?/admin/projects/add/1";
+
+    public Logger logger = LogManager.getLogger(AddNewProjectPage.class);
 
     // Selectors description
     protected static final By projectTabBy = By.id("projects-tabs-project");
@@ -37,9 +41,13 @@ public class AddNewProjectPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         try {
-            return getAcceptProjectButton().isDisplayed();
+            if(getAcceptProjectButton().isDisplayed()) {
+                logger.info("Add new project page opened successfully");
+                return true;
+            } else return false;
         } catch (Exception ex)
         {
+            logger.error("Add new project page has not been opened");
             return false;
         }
     }

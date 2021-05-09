@@ -2,10 +2,14 @@ package pages;
 
 import baseEntities.BasePage;
 import core.BrowserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class AddNewTestCase extends SuiteDetailedPage {
+
+    public Logger logger = LogManager.getLogger(AddNewTestCase.class);
 
     private static final String END_POINT = "index.php?/cases/add/";
 
@@ -29,10 +33,15 @@ public class AddNewTestCase extends SuiteDetailedPage {
     @Override
     public boolean isPageOpened() {
         try {
-            return getAcceptAddingTestCaseButton().isDisplayed();
+            if(getAcceptAddingTestCaseButton().isDisplayed()) {
+                logger.info("Add New Test Case page opened successfully");
+                return true;
+            } else return false;
         } catch (Exception ex) {
+            logger.error("Add New Test Case page has not been opened");
             return false;
-        }    }
+        }
+    }
 
     public WebElement getAcceptAddingTestCaseButton() {
         return driver.findElement(acceptAddingTestCaseButtonBy);

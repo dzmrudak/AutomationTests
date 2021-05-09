@@ -15,7 +15,7 @@ import steps.LoginSteps;
 public class SmokeTest1 extends BaseTest {
 
     @Test
-    public void LoginTest(){
+    public void LoginTest() {
         //1. Запустить дравйвер
         //2. Перейти на сайт
         //3. Ввести логин
@@ -30,8 +30,8 @@ public class SmokeTest1 extends BaseTest {
 
     }
 
-    @Test (expectedExceptions = AssertionError.class)
-    public void LoginTestWithIncorrectCredentialsEmailEnteredPswEntered()  { //throws InterruptedException
+    @Test(expectedExceptions = AssertionError.class)
+    public void LoginTestWithIncorrectCredentialsEmailEnteredPswEntered() { //throws InterruptedException
         //1. Запустить дравйвер
         //2. Перейти на сайт
         //3. Ввести невалидный логин
@@ -45,8 +45,8 @@ public class SmokeTest1 extends BaseTest {
         //Assert.assertEquals(loginPage.getErrorText(), "Email/Login or Password is incorrect. Please try again.");
     }
 
-    @Test (expectedExceptions = AssertionError.class)
-    public void LoginTestWithIncorrectCredentialsEmailEmptyPswEntered()  { //throws InterruptedException
+    @Test(expectedExceptions = AssertionError.class)
+    public void LoginTestWithIncorrectCredentialsEmailEmptyPswEntered() { //throws InterruptedException
         //1. Запустить дравйвер
         //2. Перейти на сайт
         //3. Оставить поле логин пустым
@@ -58,8 +58,8 @@ public class SmokeTest1 extends BaseTest {
         loginSteps.loginWithCorrectCredentials("", "QqtRK9elseEfAk6ilYcJ");
     }
 
-    @Test (expectedExceptions = AssertionError.class)
-    public void LoginTestWithIncorrectCredentialsEmailEnteredPswEmpty()  { //throws InterruptedException
+    @Test(expectedExceptions = AssertionError.class)
+    public void LoginTestWithIncorrectCredentialsEmailEnteredPswEmpty() { //throws InterruptedException
         //1. Запустить дравйвер
         //2. Перейти на сайт
         //3. Оставить поле логин пустым
@@ -72,17 +72,18 @@ public class SmokeTest1 extends BaseTest {
     }
 
     @Test
-    public void addNewProjectTest(){
+    public void addNewProjectTest() {
         LoginSteps loginSteps = new LoginSteps(browserService);
         DashboardPage dashboardPage = loginSteps.loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
 
         dashboardPage.getSidebarProjectsAddButton().click();
 
-        Project project = new Project();
-        project.setName("Test Project DR");
-        project.setAnnouncement("Test Project Definition");
-        project.setShowAnnouncement(true);
-        project.setType(ProjectType.MULTIPLE);
+        Project project = Project.builder()
+                .name("Test Project DR")
+                .announcement("Test Project Definition")
+                .isShowAnnouncement(true)
+                .type(ProjectType.MULTIPLE)
+                .build();
 
         ProjectServiceSteps createProjectSteps = new ProjectServiceSteps(browserService);
         AllProjectsPage projectsPage = createProjectSteps.addProject(project);
@@ -93,15 +94,16 @@ public class SmokeTest1 extends BaseTest {
     }
 
     @Test(dependsOnMethods = "addNewProjectTest")
-    public void updateProjectTest(){
+    public void updateProjectTest() {
         LoginSteps loginSteps = new LoginSteps(browserService);
         DashboardPage dashboardPage = loginSteps.loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
 
-        Project project = new Project();
-        project.setName("Test Project DR");
-        project.setAnnouncement("Test Project Definition Changed");
-        project.setShowAnnouncement(false);
-        project.setType(ProjectType.SINGLE_WITH_BASELINE);
+        Project project = Project.builder()
+                .name("Test Project DR")
+                .announcement("Test Project Definition UPDATED")
+                .isShowAnnouncement(true)
+                .type(ProjectType.MULTIPLE)
+                .build();
 
         dashboardPage.getProjectNameTitle(project.getName()).click();
 
@@ -115,7 +117,7 @@ public class SmokeTest1 extends BaseTest {
     }
 
     @Test(dependsOnMethods = "addNewProjectTest")
-    public void deleteProjectTest(){
+    public void deleteProjectTest() {
         LoginSteps loginSteps = new LoginSteps(browserService);
         DashboardPage dashboardPage = loginSteps.loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
         dashboardPage.getAdministrationButton().click();
@@ -123,10 +125,12 @@ public class SmokeTest1 extends BaseTest {
         AllProjectsPage allProjectsPage = new AllProjectsPage(browserService, true);
         allProjectsPage.getProjectsTab().click();
 
-        Project project = new Project();
-        project.setName("Test Project DR");
-        ProjectServiceSteps deletingProject = new ProjectServiceSteps(browserService);
-        deletingProject.deleteProject(project);
+        Project project = Project.builder()
+                .name("Test Project DR")
+                .announcement("Test Project Definition UPDATED")
+                .isShowAnnouncement(true)
+                .type(ProjectType.MULTIPLE)
+                .build();
 
         Assert.assertEquals(allProjectsPage.getSuccessMessage().getText(), "Successfully deleted the project.");
     }

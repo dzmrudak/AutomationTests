@@ -28,7 +28,7 @@ public abstract class BaseTest {
     @BeforeTest
     public void setupTest(){
         System.out.println("BeforeTest: ");
-        readProperties = new ReadProperties();
+
     }
 
     @BeforeClass

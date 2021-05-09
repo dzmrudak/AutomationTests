@@ -13,12 +13,12 @@ public class LombokTest {
     @Test
     public void lombokTest() {
         UserSimple user = UserSimple.builder()
-                .firstname("Dzmitry")
-                .lastname("Rudak")
+                .login("Rudak")
+                .password("QqtRK9elseEfAk6ilYcJ")
                 .build();
         UserSimple user1 = UserSimple.builder()
-                .firstname("Dzmitry")
-                .lastname("Rudak")
+                .login("Dzmitry")
+                .password("Rudak")
                 .build();
 //        System.out.println(user.equals(user1));
 //        System.out.println(user.getFirstname());

@@ -2,6 +2,8 @@ package pages;
 
 import baseEntities.BasePage;
 import core.BrowserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import wrappers.Table;
@@ -9,6 +11,8 @@ import wrappers.Table;
 public class AllProjectsPage extends BasePage {
 
     private static String END_POINT = "index.php?/admin/projects/overview";
+
+    public Logger logger = LogManager.getLogger(AllProjectsPage.class);
 
     private static final By projectsTabBy = By.id("navigation-sub-projects");
     protected static final By successMessageBy = By.className("message-success");
@@ -30,9 +34,13 @@ public class AllProjectsPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         try {
-            return getProjectsTab().isDisplayed();
+            if(getProjectsTab().isDisplayed()) {
+                logger.info("Add New Test Case page opened successfully");
+                return true;
+            } else return false;
         } catch (Exception ex)
         {
+            logger.error("Projects page has not been opened");
             return false;
         }
     }

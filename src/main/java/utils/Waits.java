@@ -39,4 +39,8 @@ public class Waits {
         return wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(by));
     }
 
+    public Boolean waitForInVisibilityOfElement(By by) {
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
 }
