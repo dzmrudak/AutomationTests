@@ -1,0 +1,6 @@
+{
+  "name": "string",
+  "announcement": "string",
+  "show_announcement": "bool",
+  "suite_mode": "integer"
+}
