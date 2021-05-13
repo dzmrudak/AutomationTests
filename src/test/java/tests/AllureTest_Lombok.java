@@ -15,7 +15,7 @@ import steps.TestCaseServiceSteps;
 import testData.StaticProvider;
 
 @Epic("Main Epic")
-public class AllureTest extends BaseTest {
+public class AllureTest_Lombok extends BaseTest {
 
     @Feature("Feature1")
     @Story("Story1")
