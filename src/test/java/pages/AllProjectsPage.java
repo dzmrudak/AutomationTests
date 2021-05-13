@@ -12,8 +12,6 @@ public class AllProjectsPage extends BasePage {
 
     private static String END_POINT = "index.php?/admin/projects/overview";
 
-    public Logger logger = LogManager.getLogger(AllProjectsPage.class);
-
     private static final By projectsTabBy = By.id("navigation-sub-projects");
     protected static final By successMessageBy = By.className("message-success");
     protected static final String deleteProjectButtonBy = "//td[contains(concat(' ', a, ' '), 'remove')]/a/../following-sibling :: *//div[@class = 'icon-small-delete']";
@@ -35,12 +33,12 @@ public class AllProjectsPage extends BasePage {
     public boolean isPageOpened() {
         try {
             if(getProjectsTab().isDisplayed()) {
-                logger.info("Add New Test Case page opened successfully");
+                LoginPage.logger.info("Projects page opened successfully");
                 return true;
             } else return false;
         } catch (Exception ex)
         {
-            logger.error("Projects page has not been opened");
+            LoginPage.logger.error("Projects page has not been opened");
             return false;
         }
     }

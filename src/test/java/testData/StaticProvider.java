@@ -1,10 +1,12 @@
 package testData;
 
+import dao.ProjectDaoImplementation;
 import enums.ProjectType;
 import enums.testCaseAttributes.Priority;
 import enums.testCaseAttributes.Section;
 import enums.testCaseAttributes.Template;
 import enums.testCaseAttributes.Type;
+import lombok.SneakyThrows;
 import models.Project;
 import models.TestCase;
 import org.testng.annotations.DataProvider;
@@ -12,14 +14,23 @@ import org.testng.annotations.DataProvider;
 
 public class StaticProvider {
 
-    @DataProvider(name = "Create Project")
+    @SneakyThrows
+    @DataProvider(name = "Create Project within API")
+    public static Object[][] createDataAPI(){
+        ProjectDaoImplementation prDao = new ProjectDaoImplementation();
+        return new Object[][] {
+                {"Project 1", prDao.getProject(2)}
+        };
+    }
+
+    @DataProvider(name = "Create Project with Builder")
     public static Object[][] createData(){
         return new Object[][] {
                 {"Project 1", Project.builder()
                         .name("DR project 1")
-                        .announcement("announcement1")
-                        .isShowAnnouncement(true)
-                        .type(ProjectType.SINGLE_FOR_ALL_CASES)
+                        .announcement("announcement")
+                        .showAnnouncement(false)
+                        .type(1)
                         .build()}
         };
     }
@@ -30,8 +41,8 @@ public class StaticProvider {
                 {"Project 1", Project.builder()
                         .name("DR project 1")
                         .announcement("announcement UPDATED")
-                        .isShowAnnouncement(true)
-                        .type(ProjectType.MULTIPLE)
+                        .showAnnouncement(true)
+                        .type(3)
                         .build()}
         };
     }
@@ -42,8 +53,8 @@ public class StaticProvider {
                 {"Project 1", Project.builder()
                         .name("DR project 1")
                         .announcement("announcement UPDATED")
-                        .isShowAnnouncement(true)
-                        .type(ProjectType.MULTIPLE)
+                        .showAnnouncement(true)
+                        .type(3)
                         .build()}
         };
     }

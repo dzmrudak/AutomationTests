@@ -18,7 +18,7 @@ public class restAssured {
 
     @Test
     public void simpleRestAssuredTest() {
-        RestAssured.baseURI = "https://reqres.in";
+        RestAssured.baseURI = "https://aqa04onl04.testrail.io/";
         String expectedValue = "{" +
                 "\"data\":{\"id\":2,\"email\":\"janet.weaver@reqres.in\"," +
                 "\"first_name\":\"Janet\",\"last_name\":\"Weaver\"," +
@@ -27,10 +27,13 @@ public class restAssured {
                 "\"text\":\"To keep ReqRes free, contributions towards server costs are appreciated!\"}}";
 
         // Setup Request Object
-        RequestSpecification request = RestAssured.given();
+        RequestSpecification request = RestAssured.given()
+                .auth()
+                .preemptive()
+                .basic("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
 
         // Setup Response Object
-        String endpoint = "/api/users/2";
+        String endpoint = "index.php?/api/v2/get_projects&is_completed=0";
         Response response = request.request(Method.GET, endpoint);
 
         // Get Response Status Code
@@ -41,7 +44,7 @@ public class restAssured {
         System.out.println(responseBody);
 
         Assert.assertEquals(statusCode, HttpStatus.SC_OK);
-        Assert.assertEquals(responseBody, expectedValue);
+        //Assert.assertEquals(responseBody, expectedValue);
     }
 
     @Test
@@ -79,8 +82,8 @@ public class restAssured {
         Project project = Project.builder()
                 .name("Name")
                 .announcement("Announcement")
-                .isShowAnnouncement(true)
-                .type(ProjectType.SINGLE_WITH_BASELINE)
+                .showAnnouncement(true)
+                .type(1)
                 .build();
         String result = gson.toJson(project);
 
@@ -95,8 +98,8 @@ public class restAssured {
         Project expectedProject = Project.builder()
                 .name("Name")
                 .announcement("Announcement")
-                .isShowAnnouncement(true)
-                .type(ProjectType.SINGLE_WITH_BASELINE)
+                .showAnnouncement(true)
+                .type(2)
                 .build();
 
         Project project = gson.fromJson(jsonString, Project.class);

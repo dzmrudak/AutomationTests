@@ -13,8 +13,6 @@ public class DashboardPage extends BasePage {
 
     private static String END_POINT = "index.php?/dashboard";
 
-    public Logger logger = LogManager.getLogger(DashboardPage.class);
-
     protected static final By sidebarProjectsAddButtonBy = By.id("sidebar-projects-add");
     protected String projectNameTitleBy = "remove";
     protected static final By administrationButtonBy = By.id("navigation-admin");
@@ -41,12 +39,12 @@ public class DashboardPage extends BasePage {
 
         try {
             if(getSidebarProjectsAddButton().isDisplayed()) {
-                logger.info("Dashboard page opened successfully");
+                LoginPage.logger.info("Dashboard page opened successfully");
                 return true;
             } else return false;
         } catch (Exception ex)
         {
-            logger.error("Dashboard page has not been opened");
+            LoginPage.logger.error("Dashboard page has not been opened");
             return false;
         }
     }

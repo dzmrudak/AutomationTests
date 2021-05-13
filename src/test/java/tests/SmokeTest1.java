@@ -7,7 +7,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.AllProjectsPage;
-import pages.EditProjectPage;
 import pages.ProjectPage;
 import steps.ProjectServiceSteps;
 import steps.LoginSteps;
@@ -81,8 +80,8 @@ public class SmokeTest1 extends BaseTest {
         Project project = Project.builder()
                 .name("Test Project DR")
                 .announcement("Test Project Definition")
-                .isShowAnnouncement(true)
-                .type(ProjectType.MULTIPLE)
+                .showAnnouncement(true)
+                .type(3)
                 .build();
 
         ProjectServiceSteps createProjectSteps = new ProjectServiceSteps(browserService);
@@ -101,8 +100,8 @@ public class SmokeTest1 extends BaseTest {
         Project project = Project.builder()
                 .name("Test Project DR")
                 .announcement("Test Project Definition UPDATED")
-                .isShowAnnouncement(true)
-                .type(ProjectType.MULTIPLE)
+                .showAnnouncement(true)
+                .type(3)
                 .build();
 
         dashboardPage.getProjectNameTitle(project.getName()).click();
@@ -128,8 +127,8 @@ public class SmokeTest1 extends BaseTest {
         Project project = Project.builder()
                 .name("Test Project DR")
                 .announcement("Test Project Definition UPDATED")
-                .isShowAnnouncement(true)
-                .type(ProjectType.MULTIPLE)
+                .showAnnouncement(true)
+                .type(3)
                 .build();
 
         Assert.assertEquals(allProjectsPage.getSuccessMessage().getText(), "Successfully deleted the project.");

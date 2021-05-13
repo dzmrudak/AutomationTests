@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Configuration status="debug" strict="true" name="XMLConfigTest">
+<Configuration status="info" strict="true" name="XMLConfigTest">
     <Properties>
         <Property name="filename">target/test.log</Property>
     </Properties>
@@ -19,10 +19,10 @@
         </Appender>
     </Appenders>
     <Loggers>
-        <Logger name="AllureTest" level="debug" additivity="false">
+        <Logger name="JdbcService" level="info" additivity="false">
             <AppenderRef ref="File"/>
         </Logger>
-        <Root level="debug">
+        <Root level="info">
             <AppenderRef ref="File"/>
         </Root>
     </Loggers>

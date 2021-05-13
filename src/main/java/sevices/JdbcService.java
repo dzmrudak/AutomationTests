@@ -1,12 +1,13 @@
 package sevices;
 
-import org.testng.log4testng.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
 public class JdbcService {
 
-    static Logger logger = Logger.getLogger(JdbcService.class);
+    static Logger logger = LogManager.getLogger(JdbcService.class);
 
     static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     static final String USERNAME = "postgres";
@@ -58,7 +59,6 @@ public class JdbcService {
     public Statement getStatement() {
         try {
             if (statement == null) {
-
                 statement = connection.createStatement();
             }
         } catch (SQLException ex) {
@@ -70,7 +70,7 @@ public class JdbcService {
     }
 
     public void closeStatement() {
-        try{
+        try {
             statement.close();
         } catch (SQLException exception) {
             logger.error("Statement can not be closed");
@@ -79,16 +79,16 @@ public class JdbcService {
     }
 
     public void executeSQL(String sql) {
-        try{
+        try {
             getStatement().execute(sql);
-        } catch (SQLException exception) {
-            logger.error(exception.getMessage());
+        } catch (SQLException ex) {
+            logger.error(ex.getMessage());
         }
     }
 
     public ResultSet executeQuery(String sql) {
         ResultSet resultSet = null;
-        try{
+        try {
             resultSet = getStatement().executeQuery(sql);
             logger.info("SQL: " + sql + " has been executed");
         } catch (SQLException exception) {

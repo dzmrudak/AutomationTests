@@ -28,13 +28,13 @@ public class ProjectServiceSteps extends BaseStep {
             addProjectsPage.getAnnouncementBox().click();
         }
         switch (project.getType()) {
-            case SINGLE_FOR_ALL_CASES:
+            case 1:
                 addProjectsPage.getProjectType1RadioButton().click();
                 break;
-            case SINGLE_WITH_BASELINE:
+            case 2:
                 addProjectsPage.getProjectType2RadioButton().click();
                 break;
-            case MULTIPLE:
+            case 3:
                 addProjectsPage.getProjectType3RadioButton().click();
                 break;
             default:
@@ -74,13 +74,13 @@ public class ProjectServiceSteps extends BaseStep {
         }
 
         switch (project.getType()) {
-            case SINGLE_FOR_ALL_CASES:
+            case 1:
                 editProjectsPage.getProjectType1RadioButton().click();
                 break;
-            case SINGLE_WITH_BASELINE:
+            case 2:
                 editProjectsPage.getProjectType2RadioButton().click();
                 break;
-            case MULTIPLE:
+            case 3:
                 editProjectsPage.getProjectType3RadioButton().click();
                 break;
             default:

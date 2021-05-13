@@ -14,8 +14,6 @@ public class AddNewProjectPage extends BasePage {
 
     private static final String END_POINT = "index.php?/admin/projects/add/1";
 
-    public Logger logger = LogManager.getLogger(AddNewProjectPage.class);
-
     // Selectors description
     protected static final By projectTabBy = By.id("projects-tabs-project");
     protected static final By projectNameInputBy = By.id("name");
@@ -42,12 +40,12 @@ public class AddNewProjectPage extends BasePage {
     public boolean isPageOpened() {
         try {
             if(getAcceptProjectButton().isDisplayed()) {
-                logger.info("Add new project page opened successfully");
+                LoginPage.logger.info("Add new project page opened successfully");
                 return true;
             } else return false;
         } catch (Exception ex)
         {
-            logger.error("Add new project page has not been opened");
+            LoginPage.logger.error("Add new project page has not been opened");
             return false;
         }
     }

@@ -28,4 +28,16 @@ public class ReadProperties {
     public int getTimeout() {
         return Integer.parseInt(properties.getProperty("timeout"));
     }
+
+    public String getDbUrl() {
+        return properties.getProperty("db_url");
+    }
+
+    public String getDbUsername() {
+        return properties.getProperty("db_username");
+    }
+
+    public String getDbPsw() {
+        return properties.getProperty("db_psw");
+    }
 }
