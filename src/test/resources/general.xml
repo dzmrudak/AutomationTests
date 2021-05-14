@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="general" thread-count="2" parallel="classes">
+
+    <test name="GUI tests">
+        <classes>
+
+            <class name="tests.SmokeTest1"></class>
+<!--            <class name="tests.SmokeTest2"></class>-->
+
+        </classes>
+
+
+    </test>
+
+</suite>

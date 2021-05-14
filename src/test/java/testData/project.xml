@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projects>
+    <name>string</name>
+    <announcement>string</announcement>
+    <show_announcement>bool</show_announcement>
+    <suite_mode>integer</suite_mode>
+</projects>
